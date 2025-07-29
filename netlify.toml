@@ -1,17 +1,20 @@
 [build]
-  command = "pip install -r requirements-netlify.txt -t python"
+  command = "pip install -r requirements-netlify.txt -t python && npm install"
   functions = "netlify/functions"
   publish = "."
 
 [build.environment]
   PYTHON_VERSION = "3.11"
+  NODE_VERSION = "18"
 
+# Redirect all API requests to the Netlify function
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/main/:splat"
+  to = "/.netlify/functions/api"
   status = 200
   force = true
 
+# For SPA routing - redirect all other requests to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -22,11 +25,6 @@
   external_node_modules = ["@netlify/functions"]
   included_files = ["**/*.py", "**/*.json", "**/*.toml", "**/*.txt"]
   directory = "netlify/functions"
-
-[functions.runtime_settings]
-  node_bundler = "esbuild"
-  external_node_modules = ["@netlify/functions"]
-  included_files = ["**/*.py", "**/*.json", "**/*.toml", "**/*.txt"]
 
 [dev]
   framework = "#custom"

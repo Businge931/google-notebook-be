@@ -1,0 +1,15 @@
+{
+  "name": "google-notebook-be",
+  "version": "1.0.0",
+  "description": "Backend for Google NotebookLM clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@netlify/functions": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
