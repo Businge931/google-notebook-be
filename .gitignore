@@ -59,8 +59,11 @@ vector_indexes/
 test_vector_indexes/
 chroma_db/
 
-# Environment variables (keep for deployment but exclude sensitive data)
-# .env
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
 
 # Testing
 .coverage
