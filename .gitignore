@@ -96,3 +96,6 @@ test_*.py
 integrate_*.py
 simple_ai_integration.py
 create_test_pdf.py
+
+# Local Netlify folder
+.netlify
