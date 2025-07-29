@@ -23,10 +23,17 @@
 [functions]
   # Specifies the directory where your functions are located
   directory = "netlify/functions"
-  # Specifies that we're using Python for our functions
-  runtime = "python3.11"
-  # Include all necessary files for the function
-  included_files = ["**/*.py", "**/*.json", "**/*.txt"]
+  
+  # Runtime settings
+  [functions.runtime]
+    # Specifies that we're using Python for our functions
+    runtime = "python3.11"
+    
+    # Include all necessary files for the function
+    included_files = ["**/*.py", "**/*.json", "**/*.txt"]
+    
+    # External node modules (empty for Python functions)
+    external_node_modules = []
 
 [dev]
   framework = "#custom"
