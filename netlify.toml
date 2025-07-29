@@ -1,5 +1,5 @@
 [build]
-  command = "pip install -r requirements-prod.txt"
+  command = "pip install -r requirements.txt -t python"
   functions = "netlify/functions"
   publish = "."
 
@@ -7,10 +7,29 @@
   PYTHON_VERSION = "3.11"
 
 [[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/api/:splat"
+  from = "/api/*"
+  to = "/.netlify/functions/main/:splat"
   status = 200
   force = true
 
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [functions]
-  python_runtime = "python3.11"
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/functions"]
+  included_files = ["**/*.py", "**/*.json", "**/*.toml", "**/*.txt"]
+  directory = "netlify/functions"
+
+[functions.runtime_settings]
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/functions"]
+  included_files = ["**/*.py", "**/*.json", "**/*.toml", "**/*.txt"]
+
+[dev]
+  framework = "#custom"
+  command = "uvicorn main:app --host 0.0.0.0 --port $PORT --reload"
+  targetPort = 8000
+  publish = "."
