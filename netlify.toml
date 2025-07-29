@@ -1,5 +1,5 @@
 [build]
-  command = "pip install -r requirements-netlify.txt -t python && npm install"
+  command = "pip install -r requirements-netlify.txt -t python"
   functions = "netlify/functions"
   publish = "."
 
@@ -21,10 +21,12 @@
   status = 200
 
 [functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["@netlify/functions"]
-  included_files = ["**/*.py", "**/*.json", "**/*.toml", "**/*.txt"]
+  # Specifies the directory where your functions are located
   directory = "netlify/functions"
+  # Specifies that we're using Python for our functions
+  runtime = "python3.11"
+  # Include all necessary files for the function
+  included_files = ["**/*.py", "**/*.json", "**/*.txt"]
 
 [dev]
   framework = "#custom"
