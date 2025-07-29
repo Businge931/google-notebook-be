@@ -1,0 +1,57 @@
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.13.1
+psycopg2-binary==2.9.9
+asyncpg==0.29.0
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# PDF Processing
+PyMuPDF==1.23.8
+pypdf2==3.0.1
+pdf2image==1.16.3
+llama-parse==0.4.4  # LlamaParse for advanced PDF-to-markdown conversion
+
+# AI/ML & Vector Operations
+openai==1.6.1
+langchain==0.0.350
+sentence-transformers==2.2.2
+chromadb==0.4.18
+llama-index==0.9.0  # LlamaIndex for enhanced document processing
+# pinecone-client==2.2.4  # Removed - FAISS selected as vector database solution
+
+# Background Processing
+celery==5.3.4
+redis==5.0.1
+flower==2.0.1
+
+# HTTP Client & External Services
+httpx==0.25.2
+boto3==1.34.0
+botocore==1.34.0
+
+# Monitoring & Logging
+structlog==23.2.0
+sentry-sdk[fastapi]==1.38.0
+prometheus-client==0.19.0
+
+# Development & Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Environment & Configuration
+python-dotenv==1.0.0

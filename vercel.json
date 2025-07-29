@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "main.py"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": ".",
+    "DEBUG": "false",
+    "STORAGE_TYPE": "local",
+    "MAX_FILE_SIZE": "100",
+    "ALLOWED_FILE_TYPES": "[\"application/pdf\"]",
+    "OPENAI_MODEL": "gpt-3.5-turbo",
+    "EMBEDDING_MODEL": "text-embedding-3-small",
+    "MAX_TOKENS": "4000",
+    "TEMPERATURE": "0.7",
+    "OPENAI_TIMEOUT": "60"
+  },
+  "functions": {
+    "main.py": {
+      "maxDuration": 60
+    }
+  }
+}

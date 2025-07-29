@@ -1,0 +1,60 @@
+services:
+  # Web Service (FastAPI Backend)
+  - type: web
+    name: notebooklm-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: APP_NAME
+        value: Google NotebookLM Clone
+      - key: DEBUG
+        value: false
+      - key: HOST
+        value: 0.0.0.0
+      - key: ALLOWED_ORIGINS
+        value: '["https://notebooklm-frontend.vercel.app", "http://localhost:3000", "http://localhost:5173"]'
+      - key: STORAGE_TYPE
+        value: local
+      - key: MAX_FILE_SIZE
+        value: 100
+      - key: ALLOWED_FILE_TYPES
+        value: '["application/pdf"]'
+      - key: OPENAI_MODEL
+        value: gpt-3.5-turbo
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: MAX_TOKENS
+        value: 4000
+      - key: TEMPERATURE
+        value: 0.7
+      - key: OPENAI_TIMEOUT
+        value: 60
+      - key: DB_POOL_SIZE
+        value: 10
+      - key: DB_MAX_OVERFLOW
+        value: 20
+      - key: DB_POOL_TIMEOUT
+        value: 30
+      - key: REDIS_MAX_CONNECTIONS
+        value: 10
+
+  # PostgreSQL Database
+  - type: pserv
+    name: notebooklm-postgres
+    env: postgresql
+    plan: starter
+    ipAllowList: []
+
+  # Redis Service
+  - type: redis
+    name: notebooklm-redis
+    plan: starter
+    ipAllowList: []
+
+databases:
+  - name: notebooklm_db
+    databaseName: notebooklm_db
+    user: notebooklm_user
